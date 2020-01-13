@@ -13,12 +13,10 @@ exports.main_handler = (event, context, callback) => {
   });
   console.log('%j', content);
 
-  //FIXME use your own key here.
-  const webhook_key='9f000f73-0000-0000-0000-087d3000001c';
   const options = {
     hostname: 'qyapi.weixin.qq.com',
     port: 443,
-    path: '/cgi-bin/webhook/send?key='+webhook_key,
+    path: '/cgi-bin/webhook/send?key='+process.env.WEBHOOK_KEY,
     method: 'POST'
   };
   var req = https.request(options, function(res) {
